@@ -3,7 +3,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -18,7 +17,7 @@ public class SearchTests {
 
     @Test
     void successfulSearchTest() {
-        open(Configuration.baseUrl);
+        open("");
         $("#firstName").setValue("Виктор");
         $("#lastName").setValue("Степаныч");
         $("#userEmail").setValue("vs@mail.ru");
