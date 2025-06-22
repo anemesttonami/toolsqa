@@ -39,9 +39,9 @@ public class SolutionsEnterprize {
     }
 
 
-    void dragAndDropAndCheckResult(SelenideElement from , SelenideElement to, String aMustHave,String bMustHave) {
-        var columnA = from;
-        var columnB = to;
+    protected void dragAndDropAndCheckResult(SelenideElement whatToDrag , SelenideElement dropTarget, String aMustHave,String bMustHave) {
+        var columnA = whatToDrag;
+        var columnB = dropTarget;
 
         Actions actions = new Actions(WebDriverRunner.getWebDriver());
         actions
