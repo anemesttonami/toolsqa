@@ -1,0 +1,13 @@
+{
+  "Group": "normal",
+  "id": 0,
+  "Details": {
+    "peopleCount": 3,
+    "peopleNames": [
+      "Vita",
+      "Olga",
+      "Stepan"
+    ],
+    "location": "Russia"
+  }
+}
