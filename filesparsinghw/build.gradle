@@ -8,12 +8,17 @@ repositories {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.19.1",
-            "org.junit.jupiter:junit-jupiter:5.9.3",
-            "com.opencsv:opencsv:5.8",
-            "com.codeborne:xls-test:1.4.3",
-            "com.codeborne:pdf-test:1.5.0",
-            "com.fasterxml.jackson.core:jackson-core:2.13.1")
+            'com.codeborne:selenide:6.19.1',
+            'org.junit.jupiter:junit-jupiter:5.9.3',
+            'com.opencsv:opencsv:5.8',
+            'com.codeborne:xls-test:1.4.3',
+            'com.codeborne:pdf-test:1.5.0',
+            'com.fasterxml.jackson.core:jackson-databind:2.17.0',
+            'com.fasterxml.jackson.core:jackson-annotations:2.17.0',
+            'org.projectlombok:lombok:1.18.32')
+
+    compileOnly('org.projectlombok:lombok:1.18.32')
+    annotationProcessor('org.projectlombok:lombok:1.18.32')
 }
 
 tasks.withType(JavaCompile) {
