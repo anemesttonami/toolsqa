@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 
 public class PracticeFormPage {
@@ -49,25 +50,33 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage openStartPage() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        step("открываем главную страницу", () -> {
+            open("/automation-practice-form");
+            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+        });
         return this;
     }
 
     public PracticeFormPage setFirstName(String name) {
-        FIRST_NAME_INPUT.setValue(name);
+        step("вводим имя", () -> {
+            FIRST_NAME_INPUT.setValue(name);
+        });
         return this;
     }
 
     public PracticeFormPage setLastName(String name) {
-        LAST_NAME_INPUT.setValue(name);
+        step("вводим фамилию", () -> {
+            LAST_NAME_INPUT.setValue(name);
+        });
         return this;
     }
 
     public PracticeFormPage setUserEmail(String email) {
-        USER_EMAIL_INPUT.setValue(email);
+        step("вводим email", () -> {
+            USER_EMAIL_INPUT.setValue(email);
+        });
         return this;
     }
 
@@ -75,13 +84,19 @@ public class PracticeFormPage {
 
         switch (gender) {
             case "Male":
-                GENDER_MALE_RADIO.click();
+                step("выбираем Male radio", () -> {
+                    GENDER_MALE_RADIO.click();
+                });
                 break;
             case "Female":
-                GENDER_FEMALE_RADIO.click();
+                step("выбираем Female radio", () -> {
+                    GENDER_FEMALE_RADIO.click();
+                });
                 break;
             case "Other":
-                GENDER_OTHER_RADIO.click();
+                step("выбираем Other radio", () -> {
+                    GENDER_OTHER_RADIO.click();
+                });
                 break;
         }
 
@@ -89,71 +104,105 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage setMobileNumber(String number) {
-        USER_NUMBER_INPUT.setValue(number);
+        step("вводим номер телефона", () -> {
+            USER_NUMBER_INPUT.setValue(number);
+        });
         return this;
     }
 
     public PracticeFormPage setDateOfBirth(String day, String month, String year) {
-        DATE_OF_BIRTH_INPUT.click();
-        calendar.setDateToCalendar(Integer.valueOf(day), month, year);
+        step("выбираем в календаре дату рождения", () -> {
+            DATE_OF_BIRTH_INPUT.click();
+            calendar.setDateToCalendar(Integer.valueOf(day), month, year);
+        });
         return this;
     }
 
     public PracticeFormPage setSubjects(String subject) {
-        SUBJECTS_INPUT.setValue(subject).sendKeys(Keys.ENTER);
+        step("выбираем subject", () -> {
+            SUBJECTS_INPUT.setValue(subject).sendKeys(Keys.ENTER);
+        });
         return this;
     }
 
     public PracticeFormPage setHobbies(String hobby) {
         if (hobby.equals("Sports")) {
-            HOBBIES_SPORTS.click();
+            step("выбираем хобби Sports", () -> {
+                HOBBIES_SPORTS.click();
+            });
         } else if (hobby.equals("Reading")) {
-            HOBBIES_READING.click();
+            step("выбираем хобби Reading", () -> {
+                HOBBIES_READING.click();
+            });
         } else if (hobby.equals("Music")) {
-            HOBBIES_MUSIC.click();
+            step("выбираем хобби Music", () -> {
+                HOBBIES_MUSIC.click();
+            });
         }
         return this;
     }
 
     public PracticeFormPage uploadTestPicture() {
-        UPLOAD_PICTURE.uploadFromClasspath("image.png");
+        step("грузим картинку", () -> {
+            UPLOAD_PICTURE.uploadFromClasspath("image.png");
+        });
         return this;
     }
 
     public PracticeFormPage setCurrentAddress(String address) {
-        CURRENT_ADDRESS_INPUT.setValue(address);
+        step("вводим адрес", () -> {
+            CURRENT_ADDRESS_INPUT.setValue(address);
+        });
         return this;
     }
 
     public PracticeFormPage setStateAndCity(String state, String city) {
-        this.STATE.click();
+        step("клик по state", () -> {
+            this.STATE.click();
+        });
 
         switch (state) {
             case "NCR":
-                $("#react-select-3-option-0").click();
+                step("выбираем государство NCR", () -> {
+                    $("#react-select-3-option-0").click();
+                });
                 break;
             case "Uttar Pradesh":
-                $("#react-select-3-option-1").click();
+                step("выбираем государство Uttar Pradesh", () -> {
+                    $("#react-select-3-option-1").click();
+                });
                 break;
             case "Haryana":
-                $("#react-select-3-option-2").click();
+                step("выбираем государство Haryana", () -> {
+                    $("#react-select-3-option-2").click();
+                });
                 break;
             case "Rajasthan":
-                $("#react-select-3-option-3").click();
+                step("выбираем государство Rajasthan", () -> {
+                    $("#react-select-3-option-3").click();
+                });
                 break;
         }
 
-        this.CITY.click();
+        step("клик по полю выбора города", () -> {
+            this.CITY.click();
+        });
 
         switch (city) {
             case "Agra":
-                $("#react-select-4-option-0").click();
+                step("выбираем город Agra", () -> {
+                    $("#react-select-4-option-0").click();
+                });
                 break;
             case "Lucknow":
-                $("#react-select-4-option-1").click();
+                step("выбираем город Lucknow", () -> {
+                    $("#react-select-4-option-1").click();
+                });
                 break;
             case "Merrut":
-                $("#react-select-4-option-2").click();
+                step("выбираем город Merrut", () -> {
+                    $("#react-select-4-option-2").click();
+                });
                 break;
         }
 
@@ -161,12 +210,16 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage submitForm() {
-        SUBMIT.click();
+        step("жмем submit", () -> {
+            SUBMIT.click();
+        });
         return this;
     }
 
     public PracticeFormPage checkThanksTitle() {
-        THANKS_TITLE.shouldHave(exactText("Thanks for submitting the form"));
+        step("проверяем наличие заголовка", () -> {
+            THANKS_TITLE.shouldHave(exactText("Thanks for submitting the form"));
+        });
         return this;
     }
 }

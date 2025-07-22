@@ -30,7 +30,29 @@ dependencies {
 }
 
 tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8' // без этой настройки могут возникать проблемы с кодировкой, если в коде есть кириллица
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+tasks.register('positive_tests', Test) { //регистрируем таску гредл для сборки тестов с тегом positive
+    useJUnitPlatform {
+        includeTags("positive")
+    }
+}
+
+tasks.register('negative_tests', Test) { //регистрируем таску гредл для сборки тестов с тегом negative
+    useJUnitPlatform {
+        includeTags("negative")
+    }
 }
 
 test {
