@@ -12,25 +12,25 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 public class PracticeFormPage {
-    public SelenideElement
-            firstName = $("#firstName"),
-            lastName = $("#lastName"),
-            userEmail = $("#userEmail"),
-            genderMaleRadio = $("label[for=gender-radio-1]"),
-            genderFemaleRadio = $("label[for=gender-radio-2]"),
-            genderOtherRadio = $("label[for=gender-radio-3]"),
-            userNumber = $("#userNumber"),
-            dateOfBirthInput = $("#dateOfBirthInput"),
-            subjects = $("#subjectsContainer input"),
-            hobbiesSports = $("label[for=hobbies-checkbox-1]"),
-            hobbiesReading = $("label[for=hobbies-checkbox-2]"),
-            hobbiesMusic = $("label[for=hobbies-checkbox-3]"),
-            uploadPicture = $("#uploadPicture"),
-            currentAddress = $("#currentAddress"),
-            state = $("#state"),
-            city = $("#city"),
-            submit = $("#submit"),
-            thanksTitle = $("#example-modal-sizes-title-lg");
+    private static final SelenideElement
+            FIRST_NAME_INPUT = $("#firstName"),
+            LAST_NAME_INPUT = $("#lastName"),
+            USER_EMAIL_INPUT = $("#userEmail"),
+            GENDER_MALE_RADIO = $("label[for=gender-radio-1]"),
+            GENDER_FEMALE_RADIO = $("label[for=gender-radio-2]"),
+            GENDER_OTHER_RADIO = $("label[for=gender-radio-3]"),
+            USER_NUMBER_INPUT = $("#userNumber"),
+            DATE_OF_BIRTH_INPUT = $("#dateOfBirthInput"),
+            SUBJECTS_INPUT = $("#subjectsContainer input"),
+            HOBBIES_SPORTS = $("label[for=hobbies-checkbox-1]"),
+            HOBBIES_READING = $("label[for=hobbies-checkbox-2]"),
+            HOBBIES_MUSIC = $("label[for=hobbies-checkbox-3]"),
+            UPLOAD_PICTURE = $("#uploadPicture"),
+            CURRENT_ADDRESS_INPUT = $("#currentAddress"),
+            STATE = $("#state"),
+            CITY = $("#city"),
+            SUBMIT = $("#submit"),
+            THANKS_TITLE = $("#example-modal-sizes-title-lg");
 
     CalendarComponent calendar = new CalendarComponent();
 
@@ -43,17 +43,17 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage setFirstName(String name) {
-        firstName.setValue(name);
+        FIRST_NAME_INPUT.setValue(name);
         return this;
     }
 
     public PracticeFormPage setLastName(String name) {
-        lastName.setValue(name);
+        LAST_NAME_INPUT.setValue(name);
         return this;
     }
 
     public PracticeFormPage setUserEmail(String email) {
-        userEmail.setValue(email);
+        USER_EMAIL_INPUT.setValue(email);
         return this;
     }
 
@@ -61,13 +61,13 @@ public class PracticeFormPage {
 
         switch (gender) {
             case "Male":
-                genderMaleRadio.click();
+                GENDER_MALE_RADIO.click();
                 break;
             case "Female":
-                genderFemaleRadio.click();
+                GENDER_FEMALE_RADIO.click();
                 break;
             case "Other":
-                genderOtherRadio.click();
+                GENDER_OTHER_RADIO.click();
                 break;
         }
 
@@ -75,44 +75,44 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage setMobileNumber(String number) {
-        userNumber.setValue(number);
+        USER_NUMBER_INPUT.setValue(number);
         return this;
     }
 
     public PracticeFormPage setDateOfBirth(String day, String month, String year) {
-        dateOfBirthInput.click();
+        DATE_OF_BIRTH_INPUT.click();
         calendar.setDateToCalendar(Integer.valueOf(day), month, year);
         return this;
     }
 
     public PracticeFormPage setSubjects(String subject) {
-        subjects.setValue(subject).sendKeys(Keys.ENTER);
+        SUBJECTS_INPUT.setValue(subject).sendKeys(Keys.ENTER);
         return this;
     }
 
     public PracticeFormPage setHobbies(String hobby) {
         if (hobby.equals("Sports")) {
-            hobbiesSports.click();
+            HOBBIES_SPORTS.click();
         } else if (hobby.equals("Reading")) {
-            hobbiesReading.click();
+            HOBBIES_READING.click();
         } else if (hobby.equals("Music")) {
-            hobbiesMusic.click();
+            HOBBIES_MUSIC.click();
         }
         return this;
     }
 
     public PracticeFormPage uploadTestPicture() {
-        uploadPicture.uploadFromClasspath("image.png");
+        UPLOAD_PICTURE.uploadFromClasspath("image.png");
         return this;
     }
 
     public PracticeFormPage setCurrentAddress(String address) {
-        currentAddress.setValue(address);
+        CURRENT_ADDRESS_INPUT.setValue(address);
         return this;
     }
 
     public PracticeFormPage setStateAndCity(String state, String city) {
-        this.state.click();
+        this.STATE.click();
 
         switch (state) {
             case "NCR":
@@ -129,7 +129,7 @@ public class PracticeFormPage {
                 break;
         }
 
-        this.city.click();
+        this.CITY.click();
 
         switch (city) {
             case "Agra":
@@ -147,12 +147,12 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage submitForm() {
-        submit.click();
+        SUBMIT.click();
         return this;
     }
 
     public PracticeFormPage checkThanksTitle() {
-        thanksTitle.shouldHave(exactText("Thanks for submitting the form"));
+        THANKS_TITLE.shouldHave(exactText("Thanks for submitting the form"));
         return this;
     }
 }
