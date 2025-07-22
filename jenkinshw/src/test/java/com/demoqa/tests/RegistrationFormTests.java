@@ -33,15 +33,17 @@ public class RegistrationFormTests extends BaseRegistrationTest {
         formPage.openStartPage()
                 .setMobileNumber("012345678")
                 .submitForm();
-        formPage.userNumber.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+
+        PracticeFormPage.getUserNumberInput().shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
     }
 
     @Test
     public void genderNotSelectedTest() {
         formPage.openStartPage()
                 .submitForm();
-        formPage.genderMaleRadio.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        formPage.genderFemaleRadio.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        formPage.genderOtherRadio.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+
+        PracticeFormPage.getGenderMaleRadio().shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        PracticeFormPage.getGenderFemaleRadio().shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        PracticeFormPage.getGenderOtherRadio().shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
     }
 }

@@ -32,6 +32,22 @@ public class PracticeFormPage {
 
     CalendarComponent calendar = new CalendarComponent();
 
+    public static SelenideElement getUserNumberInput() {
+        return USER_NUMBER_INPUT;
+    }
+
+    public static SelenideElement getGenderMaleRadio() {
+        return GENDER_MALE_RADIO;
+    }
+
+    public static SelenideElement getGenderFemaleRadio() {
+        return GENDER_FEMALE_RADIO;
+    }
+
+    public static SelenideElement getGenderOtherRadio() {
+        return GENDER_OTHER_RADIO;
+    }
+
     public PracticeFormPage openStartPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
