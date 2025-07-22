@@ -10,16 +10,17 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 public class CheckIssue {
+
     @BeforeAll
     static void cofigureWebdriverForTests() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1980x1020";
         Configuration.pageLoadStrategy = "eager";
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @Test
     public void chekIssueClearSelenide() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         open("https://github.com");
         $("span[data-target='qbsearch-input.inputButtonText']").click();
         $("#query-builder-test").setValue("anemesttonami/toolsqa").pressEnter();
@@ -29,7 +30,6 @@ public class CheckIssue {
 
     @Test
     public void chekIssueThroughStepWithLambda() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
         step("открываем главную страницу github", () -> open("https://github.com"));
         step("клик по поиску", () -> $("span[data-target='qbsearch-input.inputButtonText']").click());
         step("ввод репозитория + enter", () -> $("#query-builder-test").setValue("anemesttonami/toolsqa").pressEnter());
